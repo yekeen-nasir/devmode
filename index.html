@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="3; url=http://example.com">
+  <title>Button Toggle</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: white;
+      transition: background-color 0.5s;
+    }
+
+    #container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 60px;
+      padding: 1px;
+      background-color: lightgray;
+      border-radius: 30px;
+    }
+
+    #toggleButton {
+      width: 30px;
+      height: 30px;
+      background-color: ash;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.5s, background-color 0.5s;
+    }
+
+    .moved {
+      transform: translateX(30px);
+      background-color: green;
+    }
+
+    .dev-mode {
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <center id="devModeText"> <h1 style="display: inline;">Dev Mode</h1></center>
+  <div id="container">
+    <button id="toggleButton"></button>
+  </div>
+
+  <script>
+    const toggleButton = document.getElementById('toggleButton');
+    const body = document.body;
+    let devMode = false;
+
+    toggleButton.addEventListener('click', () => {
+      devMode = !devMode;
+
+      if (devMode) {
+        toggleButton.classList.add('moved');
+        body.classList.add('dev-mode');
+      } else {
+        toggleButton.classList.remove('moved');
+        body.classList.remove('dev-mode');
+      }
+    });
+  </script>
+</body>
+</html>
